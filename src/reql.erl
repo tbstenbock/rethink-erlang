@@ -43,7 +43,7 @@
          'max'/1, 'max'/2, distinct/1, distinct/2, contains/2]).
 
 % Document manipulation
--export([pluck/2, pluck/3, pluck/4, without/2, without/3, without/4,
+-export([implicit_var/1, pluck/2, pluck/3, pluck/4, without/2, without/3, without/4,
          merge/2, merge/3, merge/4, append/2, prepend/2, difference/2,
          set_insert/2, set_union/2, set_intersection/2, set_difference/2,
          bracket/2, get_field/2, has_fields/2, has_fields/3, has_fields/4,
@@ -186,6 +186,7 @@ index_create(R, Attr, IndexFunc) -> call_cmd(R, index_create, [Attr, IndexFunc])
 ?REQL0(sync).
 
 % Selecting data
+?REQL0(implicit_var).
 db(DB) ->
     {ok, R} = gen_server:start_link(?MODULE, [], []),
     db(R, DB).
